@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 
 	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/mdb.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -18,7 +19,7 @@
 <body>
 		<div class="profile" id="app">
 		<div class="col-md-2" style="margin:0 !important; padding:0 !important">
-			<div class="profile-sidebar">
+			<div class="profile-sidebar" style="height: 1120px;">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
 					<img src="images/user.jpg" class="img-responsive" alt="">
@@ -130,13 +131,72 @@
 					<br>
 					<div class="row">
 						<div class="col-md-3 block-dashboard set te1 z-depth-1">
-							<p id="number">50</p><p id="txt">Login <br>Hit</p>
+							<p id="number">{{ loginNumber }}</p><p id="txt">Login <br>Hit</p>
 						</div>
 						<div class="col-md-3 block-dashboard2 set te2 z-depth-1">
-							<p id="number">50</p><p id="txt">Sales</p>
+							<p id="number">{{ salesNumber }}</p><p id="txt">Sales</p>
 						</div>
 						<div class="col-md-3 block-dashboard3 set te3 z-depth-1">
-							<p id="number">50</p><p id="txt">Top <br>Categories</p>
+							<p id="number">{{ categoryNumber }}</p><p id="txt">Top <br>Categories</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-7">
+								<div class="panel z-depth-1" style="margin-top:25px;">
+								  <!-- Default panel contents -->
+								  <div class="panel-heading" style="height:80px; background-color: #e0e0e0;"><h3><b>Login Hit</b> 
+								<div class="btn-group" style="margin-left: 440px; margin-top: -70px;" >
+									<h5>Filter Month</h5>
+								  <button class="btn btn-lg dropdown-toggle" style="background-color: white; color:black;" type="button" data-toggle="dropdown">
+								    6 Month <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li v-for="month in monthList"><a href="#">{{month.month}}</a></li>
+								</ul>
+								</div>
+								  </h3> </div>
+								  <div class="panel-body">
+								    <canvas id="lineChart"></canvas>
+								  </div>
+								</div>
+							</div>
+							<div class="col-md-5">
+								<div class="panel z-depth-1" style="margin-top:25px;">
+								  <!-- Default panel contents -->
+								  <div class="panel-heading" style="height:80px; background-color: #e0e0e0;"><h3><b>Top Categories</b></h3></div>
+								  <div class="panel-body">
+								  	<br>
+								  	<br>
+								    <canvas id="doughnutChart"></canvas>
+								    <br>
+								    <br>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-7">
+								<div class="panel z-depth-1" style="margin-top:25px;">
+								  <!-- Default panel contents -->
+								  <div class="panel-heading" style="height:80px; background-color: #e0e0e0;"><h3><b>Sales</b> 
+								<div class="btn-group" style="margin-left: 440px; margin-top: -70px;" >
+									<h5>Filter Month</h5>
+								  <button class="btn btn-lg dropdown-toggle" style="background-color: white; color:black;" type="button" data-toggle="dropdown">
+								    6 Month <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li v-for="month in monthList"><a href="#">{{month.month}}</a></li>
+								</ul>
+								</div>
+								  </h3> </div>
+								  <div class="panel-body">
+								    <canvas id="lineChart2"></canvas>
+								  </div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -146,79 +206,107 @@
 
 
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/mdb/jquery-3.3.1.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
+		<script src="js/mdb.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 	<script>
 		new Vue({
 			el: '#app',
 			data:{
-				editMode: false,
-				editedUser: null,
-				username: "",
-				name: "",
-				phone: "",
-				role: "",
-				search: "",
-				datalist:[
+				loginNumber: "50",
+				salesNumber: "34",
+				categoryNumber: "59",
+				monthList:[
 				{
-					username:"mdandyc",
-					name:"Muhammad Dandy",
-					phone:"08561324324",
-					role:"A"
+					month: "6 month"
 				},
 				{
-					username:"louisjohn",
-					name:"Louis John",
-					phone:"08561324324",
-					role:"B"
+					month: "5 month"
 				},
 				{
-					username:"Killa",
-					name:"Kiki Lala",
-					phone:"08561324324",
-					role:"A"
+					month: "4 month"
 				},
 				{
-					username:"OjiKino",
-					name:"Fakhroji Kino",
-					phone:"08561324324",
-					role:"C"
+					month: "3 month"
 				},
 				{
-					username:"AcaAca",
-					name:"Azhar Rio",
-					phone:"08561324324",
-					role:"B"
-				}
+					month: "2 month"
+				},
+				{
+					month: "1 month"
+				},
 				]
-			},
-			methods:{
-				addData: function(){
-					this.datalist.push({
-						username: this.username,
-						name: this.name,
-						telephone: this.telephone,
-						role: this.role,
-					});
-				},
-				sortLowest() {
-					this.datalist.sort((a, b) => a.role > b.role ? 1 : -1);
-				},
-				sortHighest() {
-					this.datalist.sort((a, b) => a.role < b.role ? 1 : -1);
-				},
-
-				editData (data) {
-					this.beforEditCache = data
-					this.editedUser = data
-				},
-				deleteEvent: function(data) {
-					this.datalist.splice(data, 1);
-				}
+				
 			},
 		})
+	</script>
+	<script>
+		//line
+var ctxL = document.getElementById("lineChart").getContext('2d');
+var myLineChart = new Chart(ctxL, {
+    type: 'line',
+    data: {
+        labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni"],
+        datasets: [
+            {
+            	backgroundColor: "#54ccef",
+                fillColor: "#54ccef",
+                strokeColor: "#54ccef",
+                pointColor: "#fff",
+                pointStrokeColor: "#54ccef",
+                pointHighlightFill: "#54ccef",
+                pointHighlightStroke: "#54ccef",
+                data: [6, 4, 3, 6, 10, 16]
+            }
+        ]
+    },
+    options: {
+        responsive: true
+    }    
+});
+		//line sales
+var ctxL = document.getElementById("lineChart2").getContext('2d');
+var myLineChart = new Chart(ctxL, {
+    type: 'line',
+    data: {
+        labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni"],
+        datasets: [
+            {
+            	backgroundColor: "#54ccef",
+                fillColor: "#54ccef",
+                strokeColor: "#54ccef",
+                pointColor: "#fff",
+                pointStrokeColor: "#54ccef",
+                pointHighlightFill: "#54ccef",
+                pointHighlightStroke: "#54ccef",
+                data: [6, 4, 3, 6, 10, 16]
+            }
+        ]
+    },
+    options: {
+        responsive: true
+    }    
+});
+//doughnut
+var ctxD = document.getElementById("doughnutChart").getContext('2d');
+var myLineChart = new Chart(ctxD, {
+    type: 'doughnut',
+    data: {
+        labels: ["xxxxx : 37.5%", "xxxxxxxx : 25%", "xxxxxxxxxxxxx : 37.5%", "xxxxxxxxxxxx: 25%"],
+        datasets: [
+            {
+                data: [100, 60, 120, 150],
+                backgroundColor: ["#75dfc8", "#efc318", "#e37e24", "#25b999"],
+                hoverBackgroundColor: ["#75dfc8", "#efc318", "#e37e24", "#25b9995"]
+            }
+        ]
+    },
+    options: {
+        responsive: true
+    }    
+});
 	</script>
 </body>
 </html>
