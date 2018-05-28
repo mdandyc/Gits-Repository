@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Test Gits</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--fontawesome-->
+	<link rel="stylesheet" href="css/material-icons.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+		<div class="profile" id="app">
+		<div class="col-md-2" style="margin:0 !important; padding:0 !important">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="images/user.jpg" class="img-responsive" alt="">
+					<!-- END SIDEBAR USERPIC -->
+					<!-- SIDEBAR USER TITLE -->
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">
+							John Doe
+						</div>
+						<div class="profile-usertitle-job">
+							<div class="dropdown">
+								<a class="dropdown-toggle" style="cursor: pointer;color: #fff;" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									Art Directior
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+								</ul>
+							</div>					
+						</div>
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="" id="dashboard">
+							<a href="dashboard.html">
+								<i class="mdi mdi-dashboard"></i>
+								Dashboard
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="mdi mdi-insert-chart"></i>
+								Graphic
+							</a>
+						</li>
+						<li>
+							<a href="#" target="_blank">
+								<i class="mdi mdi-assignment"></i>
+								Form 
+							</a>
+						</li>
+						<li class="active">
+							<a href="tables.html">
+								<i class="fa fa-table" aria-hidden="true"></i>
+								Table
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-10" style="margin:0 !important; padding:0 !important">
+			<nav class="navbar navbar-default z-depth-1" role="navigation" style="margin: 0;border-radius: 0;border: 0;">
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-envelope icon-notif" aria-hidden="true" style="font-size:20px;"></i>
+							</a>
+							<ul class="list-notificacao dropdown-menu">
+								<li id='item_notification_1'>
+									<div class="media">
+										<div class="media-body">
+											<h4 class="media-heading"><b>Title</b></h4>
+											<p>Message Here</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-bell icon-notif" style="font-size:20px;"></i>
+								<span class='badgeAlert'>5</span>
+							</a>
+							<ul class="list-notificacao dropdown-menu">
+								<li id='item_notification_1'>
+									<div class="media">
+										<div class="media-left"> 
+											<a href="#"> 
+												<img alt="64x64" class="media-object" src="images/sample.png" data-holder-rendered="true">
+											</a> 
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading"><b>Notification</b></h4>
+											<p>Someone liked your post</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="logout">
+							<a href="#"><i class="fa fa-sign-out icon-notif" aria-hidden="true" style="font-size:20px;"></i>
+								Logout
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="profile-content">
+				<div class="col-md-12">
+					<!-- LIST USER STARTS HERE -->
+					<br>
+					<div class="panel credit-card-box">
+						<div class="panel-heading display-table" >
+							<div class="row display-tr" >
+								<h3 class="panel-title" >List User</h3>
+							</div>
+
+							<!-- line modal -->
+							<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+											<h3 class="modal-title" id="lineModalLabel">Input data</h3>
+										</div>
+										<div class="modal-body">
+											<form v-on:submit.prevent="addData">
+												<div class="form-group">
+													<label for="username">Username</label>
+													<input type="text" id="username" class="form-control" v-model="username">
+												</div>
+												<div class="form-group">
+													<label for="name">Name</label>
+													<input type="text" id="name" class="form-control" v-model="name">
+												</div>
+												<div class="form-group">
+													<label for="telephone">Telephone</label>
+													<input type="number" id="phone" class="form-control" v-model="telephone">
+												</div>
+												<div class="form-group">
+													<label for="role">Role</label>
+													<input type="text" id="role" class="form-control" v-model="role">
+												</div>
+												<button class="btn btn-info">Submit</button>
+												<button class="btn btn-info" type="button" data-dismiss="modal">Cancel</button>
+											</form>
+
+										</div>
+									</div>
+								</div>
+							</div> 
+
+							<div class="btn-create text-right">
+								<button type="button" data-toggle="modal" data-target="#squarespaceModal" class="btn btn-info btn-circle btn-lg"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							</div>
+						</div>
+						<div class="panel-body">
+							
+
+							<div class="col-md-3"><br>
+								<div class="input-group cari">
+									<span class="input-group-btn">
+										<button class="btn" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+									</span>
+									<input type="text" class="form-control" v-model="search" placeholder="Search">
+								</div><br>
+							</div>
+
+
+							<div class="col-md-12">
+								<table class="table table-hover table-responsive">
+									<thead>
+										<tr>
+											<th>Username</th>
+											<th>Name</th>
+											<th>Telephone</th>
+											<th>Role
+												
+												<i class="fa fa-angle-down sorting" aria-hidden="true" v-on:click="sortHighest" style="font-size:20px;"></i>
+												<i class="fa fa-angle-up sorting" aria-hidden="true" v-on:click="sortLowest" style="font-size:20px;"></i>
+											</th>
+											<th colspan="2" class="text-center">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="user in username"
+										>{{user}}</tr>
+										<tr v-for="data in datalist" :class="{editing: data == editedUser}" v-cloak>
+											<td>
+												<div class="view">
+													{{data.username}}
+												</div>
+												<div class="edit">
+													<input class="form-control" type="text" v-model="data.username"/>
+												</div>
+											</td>
+											<td>
+												<div class="view">
+													{{data.name}}
+												</div>
+												<div class="edit">
+													<input class="form-control" type="text" v-model="data.name"/>
+												</div>
+											</td>
+											<td>
+												<div class="view">
+													{{data.phone}}
+												</div>
+												<div class="edit">
+													<input class="form-control" type="number" v-model="data.phone"/>
+												</div>
+											</td>
+											<td>
+												<div class="view">
+													{{data.role}}
+												</div>
+												<div class="edit">
+													<input class="form-control" type="text" v-model="data.role"/>
+												</div>
+											</td>
+											<td class="text-center tombol-edit" @click="editData(data)">EDIT</td>
+											<td class="text-center tombol-delete" @click="deleteEvent(data)">DELETE</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="col-md-12 paging">
+								<div class="row">
+									<div class="col-md-8 text-right">
+										Rows per page :
+									</div>
+									<div class="col-md-2">
+										<select class="form-control">
+											<option>5</option>
+											<option>10</option>
+											<option>20</option>
+										</select>
+									</div>
+									<div class="col-md-2">
+										<span class="halaman">1-5 of 1-10</span>
+										<i class="fa fa-angle-left" aria-hidden="true" style="font-size:35px;"></i>
+										<i class="fa fa-angle-right" aria-hidden="true" style="font-size:35px;"></i>
+									</div>
+								</div>
+							</div>
+						</div>            
+						<!-- LIST USER FORM ENDS HERE -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data:{
+				editMode: false,
+				editedUser: null,
+				username: "",
+				name: "",
+				phone: "",
+				role: "",
+				search: "",
+				datalist:[
+				{
+					username:"mdandyc",
+					name:"Muhammad Dandy",
+					phone:"08561324324",
+					role:"A"
+				},
+				{
+					username:"louisjohn",
+					name:"Louis John",
+					phone:"08561324324",
+					role:"B"
+				},
+				{
+					username:"Killa",
+					name:"Kiki Lala",
+					phone:"08561324324",
+					role:"A"
+				},
+				{
+					username:"OjiKino",
+					name:"Fakhroji Kino",
+					phone:"08561324324",
+					role:"C"
+				},
+				{
+					username:"AcaAca",
+					name:"Azhar Rio",
+					phone:"08561324324",
+					role:"B"
+				}
+				]
+			},
+			methods:{
+				addData: function(){
+					this.datalist.push({
+						username: this.username,
+						name: this.name,
+						telephone: this.telephone,
+						role: this.role,
+					});
+				},
+				sortLowest() {
+					this.datalist.sort((a, b) => a.role > b.role ? 1 : -1);
+				},
+				sortHighest() {
+					this.datalist.sort((a, b) => a.role < b.role ? 1 : -1);
+				},
+
+				editData (data) {
+					this.beforEditCache = data
+					this.editedUser = data
+				},
+				deleteEvent: function(data) {
+					this.datalist.splice(data, 1);
+				}
+			},
+		})
+	</script>
+</body>
+</html>
