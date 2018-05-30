@@ -58,39 +58,6 @@ nav{
 .list-notificacao li:hover{
 background: #f1eeee;
 }
-
-
-.list-notificacao li  p{
- color: black;
- width: 305px;
-}
-
-.list-notificacao .media img{
-    width: 40px;
-    height: 40px;
-    float:left;
-    margin-right: 10px;
-}
-.icon-notif{
-  color: #83817e;
-}
-.badgeAlert {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 5px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-    vertical-align: baseline;
-    white-space: nowrap;
-    text-align: center;
-    background-color: #7dc89e;
-    border-radius: 3px;
-    position: absolute;
-    margin-top: -29px;
-    margin-left: 13px
-}
-
 .logout{
   margin-right: 20px;
   color: #83817e;
@@ -163,7 +130,7 @@ background: #f1eeee;
   border-bottom: none;
 }
 .profile-usermenu ul li#dashboard{
-	margin-top:-10px;
+  margin-top:-10px;
 }
 
 .profile-usermenu ul li.active a {
@@ -213,7 +180,7 @@ background: #f1eeee;
   margin-left: 21px;
 }
 .panel{
-	border:0;
+  border:0;
 }
 .profile-content .btn-circle.btn-lg {
   width: 50px;
@@ -292,3 +259,35 @@ background: #f1eeee;
   -moz-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
     box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
 }
+
+.list-notificacao li  p{
+ color: black;
+ width: 305px;
+}
+
+.list-notificacao .media img{
+    width: 40px;
+    height: 40px;
+    float:left;
+    margin-right: 10px;
+}
+.icon-notif{
+  color: #83817e;
+}
+.badgeAlert {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 5px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #7dc89e;
+    border-radius: 3px;
+    position: absolute;
+    margin-top: -29px;
+    margin-left: 13px
+}
+
